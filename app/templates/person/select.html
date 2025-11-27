@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1 ">
+                <div class="form-group">
+                    <h1>Select</h1>
+                </div>
+                <div class="form-group">
+                    <div class="pull-right mgtop-5">
+                        <a href="{{url_for('natural_person_routes.natural_list')}}" class="btn btn-danger btn-choices">Natural Persons</a>
+                        <a href="{{url_for('legal_person_routes.legal_list')}}" class="btn btn-info btn-choices">Legal Persons</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='owners/css/select.css') }}">
+{% endblock contents %}
+
+

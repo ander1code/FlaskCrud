@@ -1,0 +1,11 @@
+{% if form.errors %}
+    <div class="alert alert-danger" id="errors_alert" name="errors_alert">
+        <ul>
+        {% for error_list in form.errors.values() %}
+            {% for error in error_list %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}

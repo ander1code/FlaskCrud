@@ -1,0 +1,145 @@
+{% extends "index.html" %}
+{% block contents %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <hr>
+                </div>
+                {% if edition %}
+                <div class="form-group">
+                    <h1>Edit</h1>
+                </div>
+                {% else %}
+                <div class="form-group">
+                    <h1>Create</h1>
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="div-errors">
+                        {% include '_partials/_errors.html' %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{form.hidden_tag()}}
+                </div>
+                <div class="form-group">
+                    {{form.cpf.label(class="form-label")}}
+                    {{form.cpf(readonly=edition)}}
+                </div>
+                <div class="form-group">
+                    {{form.name.label(class="form-label")}}
+                    {{form.name}}
+                </div>
+                <div class="form-group">
+                    {{form.email.label(class="form-label")}}
+                    {{form.email(readonly=edition)}}
+                </div>
+                <div class="form-group">
+                    {{form.salary.label(class="form-label")}}
+                    {{form.salary}}
+                </div>
+                <div class="form-group">
+                    {{form.birthday.label(class="form-label")}}
+                    <div class='input-group date' id='birthday_picker'>
+                        {{form.birthday}}
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{form.gender.label(class="form-label")}}
+                    {{form.gender}}
+                </div>
+                {% if edition %}
+                <div class="form-group">
+                    <div class="pull-right">
+                        <a href="{{ url_for('static', filename='pictures/' ~ picture_url ) }}" target="_blank">
+                            <img src="{{ url_for('static', filename='pictures/' ~ picture_url ) }}" class="image-form">
+                        </a>
+                    </div>
+                    {{form.picture.label(class="form-label")}}
+                    {{form.picture}}
+                </div>
+                {% else  %}
+                <div class="form-group">
+                    {{form.picture.label(class="form-label")}}
+                    {{form.picture}}
+                </div>
+                {% endif %}
+                <div class="form-group">
+                    {{form.description.label(class="form-label")}}
+                    {{form.description}}
+                </div>
+                <div class="form-group">
+                    {{form.status.label(class="form-label")}}
+                    {{form.status}}
+                </div>
+                <div class="form-group">
+                    <hr>
+                </div>
+                {% if edition %}
+                <div class="form-group">
+                    <div id="modal_edit" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Question</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Do you want edit this register?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-modal-size" data-dismiss="modal">No</button>
+                                <button type="submit" class="btn btn-warning btn-modal-size" name='edit' id='edit'>Yes</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div id="modal_delete" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Question</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Do you want delete this register?</p>
+                            </div>
+                            <div class="modal-footer">
+                               <button type="button" class="btn btn-primary btn-modal-size" data-dismiss="modal">No</button>
+                               <button type="submit" class="btn btn-danger btn-modal-size" name='delete' id='delete'>Yes</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-warning pull-right btn-person-form" data-toggle="modal" data-target="#modal_edit">Edit</button>
+                    <button type="button" class="btn btn-danger pull-right btn-person-form" data-toggle="modal" data-target="#modal_delete">Delete</button>
+                </div>
+                {% else %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success pull-right btn-person-form">Create</button>
+                    <button type="reset" class="btn btn-secondary pull-right btn-person-form">Reset</button>
+                </div>
+                {% endif %}
+            </form>
+        </div> 
+    </div>
+</div>
+
+<script src="{{url_for('static', filename='vendors/js/moment-with-locales.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='vendors/css/bootstrap-datetimepicker.min.css')}}">
+<script src="{{url_for('static', filename='vendors/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{url_for('static', filename='vendors/js/jquery.mask.min.js')}}"></script>
+<script src="{{url_for('static', filename='vendors/js/jquery.maskMoney.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='owners/css/form.css')}}">
+<script src="{{url_for('static', filename='owners/js/natural/form.js')}}"></script>
+
+{% endblock contents %}

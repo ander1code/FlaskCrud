@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlaskCrud</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='vendors/js/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendors/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/fonts/glyphicons-halflings-regular.woff2') }}" type="font/woff2">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='vendors/images/favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{url_for('app_routes.home')}}">FlaskCrud</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="{{url_for('app_routes.home')}}">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {%if session.get('logged') %}
+                <li><a href="{{url_for('app_routes.select')}}"><span class="glyphicon glyphicon-user"></span> Select</a></li>
+                
+                  <div id="modal_logout" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Question</h4>
+                        </div>
+                        <div class="modal-body">
+                          <p>Do you want to log out?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary btn-modal-size" data-dismiss="modal">No</button>
+                          <a href="{{ url_for('login_routes.logout') }}" class="btn btn-danger btn-modal-size">Yes</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <li>
+                  <a href="#" data-toggle="modal" data-target="#modal_logout">
+                    <span class="glyphicon glyphicon-user"></span> Logout
+                  </a>
+                </li>
+
+              {% else %}
+                <li><a href="{{url_for('login_routes.login')}}"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+    </nav>
+    {% include '_partials/_modal.html' %}
+    {% include '_partials/_messages.html' %}
+    {% block contents %}
+    {% endblock contents %}
+    <footer class="footer">
+      <div class="container">
+        <p style="text-align:center;">&copy;{{session.current_year}} FlaskCrud.</p>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="{{ url_for('static', filename='owners/css/style.css') }}">
+    <script src="{{ url_for('static', filename='owners/js/script.js') }}"></script>
+</body>
+</html>

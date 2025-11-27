@@ -1,0 +1,35 @@
+body{
+    background-color:#ecf8fa;
+}
+
+/* Modal */
+.modal-content{
+    background-color:#333;
+    color:white;
+}
+
+.modal-title, .modal-body{
+    color:#333;
+    color:white;
+}
+
+.modal-body{
+    color:#333;
+    background-color:white;
+}
+
+.btn-modal-size{
+    width:90px;
+    height:40px;
+}
+
+/* Home: jumbotron */
+.jumbotron{
+    margin-top: 10%;
+    border:4px solid black;
+    border-radius: 10px;
+}
+
+
+
+

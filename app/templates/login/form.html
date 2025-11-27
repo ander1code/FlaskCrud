@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+                <div class="form-group">
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <h1>Login</h1>
+                </div>
+                    <div class="form-group">
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="div-errors">
+                        {% include '_partials/_errors.html' %}
+                    </div>
+                </div>
+            </div> 
+            <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+                <form method="post">
+                    <div class="form-group">
+                        {{form.hidden_tag()}}
+                    </div>
+                    <div class="form-group">
+                        {{form.username.label(class="form-label")}}
+                        {{form.username}}
+                    </div>
+                    <div class="form-group">
+                        {{form.password.label(class="form-label")}}
+                        {{form.password}}
+                    </div>
+                    <div class="form-group">
+                        <hr>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success pull-right btn-login-form">Login</button>
+                        <a href="{{url_for('app_routes.home')}}" class="btn btn-info pull-right btn-login-form">Cancel</a>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div>
+    <link rel="stylesheet" href="{{url_for('static', filename='owners/css/login.css')}}">
+{% endblock contents %}

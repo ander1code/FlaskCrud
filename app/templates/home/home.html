@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block contents %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1">
+                <div class="jumbotron">
+                    <p>Natural Person Registration System is a lightweight and efficient web application developed in Python using the Flask micro-framework. The system allows users to register, manage, and update personal data in a simple and intuitive interface.</p>
+                </div>
+            </div>   
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10 col-md-offset-1">
+                <img src="{{url_for('static', filename='vendors/images/sqlite.png')}}" class="pull-right" style="height:100px;">
+                <img src="{{url_for('static', filename='vendors/images/favicon.ico')}}" class="pull-right" style="height:100px;">
+                <img src="{{url_for('static', filename='vendors/images/python.png')}}" class="pull-right" style="height:100px;">
+            </div>   
+        </div>
+    </div>
+{% endblock contents %}

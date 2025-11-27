@@ -1,0 +1,22 @@
+/* Details */
+
+.btn-secondary{
+    background-color: #ccc;
+}
+
+.picture-details{
+    border-radius:7px; border:3px solid black; width:200px;
+}
+
+span{
+    font-size: 20px;
+}
+label{
+    color:blue;
+}
+
+.btn-person-details{
+    width:120px; 
+    height:40px;
+    margin-bottom: 10%;
+}
